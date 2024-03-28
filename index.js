@@ -1,20 +1,19 @@
-import { create } from "./src/ui.js";
+import { create, createCard, createList } from "./src/ui.js";
 
 const root = document.querySelector("#root");
 
-const cardDiv = create("div", {
-  className: 'card'
-});
+// trick
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(res => res.json())
+  .then(users => {
+    for (const user of users) {
+      root.append(createCard(user.name, `${user.email} / ${user.company.name}`));
+    }
+  })
 
-const cardH1 = create("h1", {
-  innerText: 'Valami'
-});
-
-const cardP = create("p", {
-  innerText: "Valamely szoveg haha blaa bla bla..."
-});
-
-cardDiv.append(cardH1);
-cardDiv.append(cardP);
-
-root.append(cardDiv);
+root.append(createList(["vlaami", "test", "adat", "item"]));
+root.append(createCard("Elso", "Bla vla bla"));
+root.append(createCard("Valami", "Bla vla bla"));
+root.append(createCard("Nemtom", "Bla vla bla"));
+root.append(createCard("Adat", "Bla vla bla"));
+root.append(createCard("Kwklol", "Bla vla bla"));
