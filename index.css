@@ -87,3 +87,23 @@ body {
   font-style: italic;
 }
 
+.card {
+  padding: 1rem;
+}
+
+.card__button {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px black;
+  padding: .2rem .7rem;
+  cursor: pointer;
+}
+
+.card__hidden {
+  display: none;
+}
+
+.card__hidden.visible {
+  display: block;
+}

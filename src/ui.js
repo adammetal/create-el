@@ -17,11 +17,12 @@ export function create(tag, attributes = {}, children = []) {
   return el;
 }
 
-export function createCard(title, text) {
+export function createCard(title, text, hidden, id) {
   const cardDiv = create(
     "div",
     {
       className: "card",
+      id: `info-${id}`
     },
     [
       create("h1", {
@@ -32,13 +33,14 @@ export function createCard(title, text) {
         innerText: text,
         className: "card__p",
       }),
-      create("button", {
-        className: "card__button",
-        innerText: "OK",
+      create("pre", {
+        innerHTML: hidden,
+        className: "card__hidden",
       }),
       create("button", {
         className: "card__button",
-        innerText: "Cancel",
+        innerText: "Info",
+        'data-target': `info-${id}`
       }),
     ]
   );
@@ -70,12 +72,6 @@ export function createTable(headers, rows) {
 
   return table;
 }
-
-createTable(["id", "name", "email"], [
-  { name: 'v', email: 'v', id: 'v' },
-  { name: 'v', email: 'v', id: 'v' }, 
-  { name: 'v', email: 'v', id: 'v' }, 
-]);
 
 /*
 <table>
